@@ -35,7 +35,7 @@ jobs:
         run: mvn -B verify spotbugs:spotbugs
       - uses: jwgmeligmeyling/spotbugs-github-action@master
         with:
-          path: '**/spotbugsXml.xml'
+          path: '**/target/spotbugsXml.xml'
 
 #      - name: Depcheck
 #        uses: dependency-check/Dependency-Check_Action@main
