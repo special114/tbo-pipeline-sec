@@ -35,6 +35,7 @@ jobs:
         run: mvn -B verify spotbugs:spotbugs
       - uses: jwgmeligmeyling/spotbugs-github-action@master
         with:
+          permissions: write-all
           path: '**/target/spotbugsXml.xml'
 
 #      - name: Depcheck
