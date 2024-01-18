@@ -16,6 +16,7 @@ on:
 
 jobs:
   push_to_registry:
+    permissions: write-all
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
@@ -35,8 +36,7 @@ jobs:
         run: mvn -B verify spotbugs:spotbugs
       - uses: jwgmeligmeyling/spotbugs-github-action@master
         with:
-          permissions: write-all
-          path: '**/target/spotbugsXml.xml'
+          path: '**/spotbugsXml.xml'
 
 #      - name: Depcheck
 #        uses: dependency-check/Dependency-Check_Action@main
