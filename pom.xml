@@ -88,8 +88,8 @@
 					</dependency>
 				</dependencies>
 				<configuration>
-<!--					<includeFilterFile>spotbugs-security-include.xml</includeFilterFile>-->
-<!--					<excludeFilterFile>spotbugs-security-exclude.xml</excludeFilterFile>-->
+					<includeFilterFile>spotbugs-security-include.xml</includeFilterFile>
+					<excludeFilterFile>spotbugs-security-exclude.xml</excludeFilterFile>
 					<plugins>
 						<plugin>
 							<groupId>com.h3xstream.findsecbugs</groupId>
@@ -99,15 +99,17 @@
 					</plugins>
 				</configuration>
 			</plugin>
-<!--			<plugin>-->
-<!--				<groupId>com.github.spotbugs</groupId>-->
-<!--				<artifactId>spotbugs-maven-plugin</artifactId>-->
-<!--				<version>4.8.3.1-SNAPSHOT</version>-->
-<!--				<configuration>-->
-<!--					<xmlOutput>true</xmlOutput>-->
-<!--					<failOnError>false</failOnError>-->
-<!--				</configuration>-->
-<!--			</plugin>-->
+			<plugin>
+				<groupId>org.owasp</groupId>
+				<artifactId>dependency-check-maven</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
