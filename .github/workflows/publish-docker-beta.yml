@@ -22,6 +22,18 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v4
 
+      - name: Depcheck
+        uses: dependency-check/Dependency-Check_Action@main
+        id: Depcheck
+        with:
+          project: 'SpringThymeleafCRUD'
+          path: '.'
+          format: 'HTML'
+#          out: 'reports' # this is the default, no need to specify unless you wish to override it
+#          args: >
+#            --failOnCVSS 7
+#            --enableRetired
+
       - name: Log in to Docker Hub
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
         with:
