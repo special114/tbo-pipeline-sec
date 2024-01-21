@@ -93,9 +93,8 @@
             </script>
 
             <script type="text/javascript">
-                const response = await fetch("/lul");
-                const movies = await response.json();
-                console.log(movies);
+                fetch("/lul")
+                    .then(response => console.log(response.json()));
             </script>
         </th:block>
     </body>
