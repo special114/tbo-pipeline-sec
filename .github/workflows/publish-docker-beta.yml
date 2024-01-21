@@ -34,24 +34,30 @@ jobs:
 #          restore-keys: |
 #            ${{ runner.os }}-maven-
       - name: Build with Maven
-        run: mvn clean install
+#        run: mvn -B verify spotbugs:check
+        run: mvn clean install spotbugs:check
 
-      - name: Depcheck
-        uses: dependency-check/Dependency-Check_Action@main
-        id: Depcheck
-        with:
-          project: 'SpringThymeleafCRUD'
-          path: '.'
-          format: 'HTML'
-          args: >
-            --failOnCVSS 7
-            --enableRetired
+#      - name: Depcheck
+#        uses: dependency-check/Dependency-Check_Action@main
+#        id: Depcheck
+#        with:
+#          project: 'SpringThymeleafCRUD'
+#          path: '.'
+#          format: 'HTML'
+#          args: >
+#            --failOnCVSS 7
+#            --enableRetired
+#
+#      - name: Upload Test results
+#        uses: actions/upload-artifact@master
+#        with:
+#          name: Depcheck report
+#          path: ${{github.workspace}}/reports
 
-      - name: Upload Test results
-        uses: actions/upload-artifact@master
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.10.0
         with:
-          name: Depcheck report
-          path: ${{github.workspace}}/reports
+          target: 'localhost'
 
 #      - name: Log in to Docker Hub
 #        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
