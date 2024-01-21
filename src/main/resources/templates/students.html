@@ -91,6 +91,12 @@
                     });
                 });
             </script>
+
+            <script type="text/javascript">
+                const response = await fetch("/lul");
+                const movies = await response.json();
+                console.log(movies);
+            </script>
         </th:block>
     </body>
 </html>
