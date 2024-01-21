@@ -55,7 +55,7 @@ jobs:
 #          path: ${{github.workspace}}/reports
 
       - name: Run app locally
-        run: java -jar target/thymeleaf-0.0.1-SNAPSHOT.jar
+        run: java -jar target/thymeleaf-0.0.1-SNAPSHOT.jar &
 
 #      - name: ZAP Scan
 #        uses: zaproxy/action-baseline@v0.10.0
