@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -28,6 +29,11 @@ public class StudentController {
     public ModelAndView showStudents() {
         List<StudentResponseDTO> students = StudentMapper.toDTO(this.studentRepository.findAll());
         return new ModelAndView("students").addObject("students", students);
+    }
+
+    @GetMapping()
+    public RedirectView showStudents(@RequestParam String url) {
+        return new RedirectView(url);
     }
 
     @GetMapping("/new")
