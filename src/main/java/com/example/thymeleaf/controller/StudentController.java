@@ -7,6 +7,7 @@ import com.example.thymeleaf.dto.mapper.StudentMapper;
 import com.example.thymeleaf.repository.StudentRepository;
 import com.example.thymeleaf.service.StudentService;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -25,10 +28,12 @@ public class StudentController {
     private StudentService studentService;
     private StudentRepository studentRepository;
 
+    @SneakyThrows
     @GetMapping
-    public Object showStudents(@RequestParam String url) {
+    public Object showStudents(@RequestParam String url, HttpServletRequest req, HttpServletResponse resp) {
         if (url != null) {
-            return new RedirectView(url);
+            resp.sendRedirect(req.getParameter(url));
+            return null;
         }
         List<StudentResponseDTO> students = StudentMapper.toDTO(this.studentRepository.findAll());
         return new ModelAndView("students").addObject("students", students);
