@@ -38,10 +38,10 @@ public class StudentController {
         return new ModelAndView("students").addObject("students", students);
     }
 
-    @GetMapping("/new")
-    public ModelAndView showCreateForm() {
-        return new ModelAndView("new-student").addObject("student", new CreateStudentDTO());
-    }
+//    @GetMapping("/new")
+//    public ModelAndView showCreateForm() {
+//        return new ModelAndView("new-student").addObject("student", new CreateStudentDTO());
+//    }
 
     @PostMapping("/new")
     public String create(@ModelAttribute("student") @Valid CreateStudentDTO studentDTO, BindingResult result, RedirectAttributes attributes) {
