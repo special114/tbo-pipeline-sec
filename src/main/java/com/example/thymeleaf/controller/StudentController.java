@@ -30,10 +30,10 @@ public class StudentController {
     @SneakyThrows
     @GetMapping
     public Object showStudents(@RequestParam String url, HttpServletResponse resp) {
-        if (url != null) {
-            resp.sendRedirect(url);
-            return null;
-        }
+//        if (url != null) {
+//            resp.sendRedirect(url);
+//            return null;
+//        }
         List<StudentResponseDTO> students = StudentMapper.toDTO(this.studentRepository.findAll());
         return new ModelAndView("students").addObject("students", students);
     }
