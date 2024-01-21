@@ -26,14 +26,12 @@ public class StudentController {
     private StudentRepository studentRepository;
 
     @GetMapping
-    public ModelAndView showStudents() {
+    public Object showStudents(@RequestParam String url) {
+        if (url != null) {
+            return new RedirectView(url);
+        }
         List<StudentResponseDTO> students = StudentMapper.toDTO(this.studentRepository.findAll());
         return new ModelAndView("students").addObject("students", students);
-    }
-
-    @GetMapping()
-    public RedirectView showStudents(@RequestParam String url) {
-        return new RedirectView(url);
     }
 
     @GetMapping("/new")
