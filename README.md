@@ -12,6 +12,8 @@ z aplikacja.
 Użyta została aplikacja z Laboratorium nr 1. Jest to prosta aplikacja w napisana
 w języku Java przy użyciu frameworku Spring + Thymeleaf. Do aplikacji dołączony był plik Dockerfile
 pozwalający zbudować obraz z aplikacją, który również będzie użyty w procesie CI/CD.
+Część funkcjonalności (dodawanie nowych użytkowników) została celowo usunięta, aby w drugim etapie
+móc zweryfikować poprawność działania procesu CI/CD.
 
 ### Repozytorium
 Repozytorium jest publiczne. Posiada główna gałąź `main`. Dostęp do niej, tzn. pushe, merge requesty,
@@ -59,12 +61,13 @@ Tylko dla gałęzi `main`. Buduje aplikację, uruchamia testy, buduje i wypycha 
 ##### publish-docker-beta
 Dla wszystkich innych gałęzi z wyjątkiem dwóch poniższych. Buduje aplikację, uruchamia testy,
 buduje i wypycha obraz z tagiem `beta`.
-##### publish-docker-beta-skip-depcheck
-Tylko dla gałęzi `skip-depcheck`. Buduje aplikację, uruchamia testy,
-buduje i wypycha obraz z tagiem `beta`. Jednak testy zależności są ustawione tak aby nie
-zwracały błędów (próg CVSS ustawiony jest na 9.9999).
+##### publish-docker-beta-dast-only
+Tylko dla gałęzi `dast-only`. Buduje aplikację, uruchamia testy,
+buduje i wypycha obraz z tagiem `beta`. Jednak testy SCA i zależności są ustawione tak aby nie
+przerywały działania workflow.
 ##### publish-docker-vulnerable
-Tylko dla gałęzi `vulnerable`. Buduje i wypycha obraz z tagiem `vulnerable`.
+Tylko dla gałęzi `vulnerable`. Buduje i wypycha obraz z tagiem `vulnerable`. Dla zobrazowania działania
+budowania i wypychania obrazu z aplikacją.
 
 
 #### Przebieg workflow
