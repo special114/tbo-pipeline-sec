@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.List;
@@ -28,9 +29,18 @@ public class StudentController {
 
     @SneakyThrows
     @GetMapping
-    public Object showStudents(@RequestParam(required = false) String url, HttpServletResponse resp) {
+    public Object showStudents(@RequestParam String url, HttpServletResponse resp) {
+        if (url != null) {
+            resp.sendRedirect(url);
+            return null;
+        }
         List<StudentResponseDTO> students = StudentMapper.toDTO(this.studentRepository.findAll());
         return new ModelAndView("students").addObject("students", students);
+    }
+
+    @GetMapping("/new")
+    public ModelAndView showCreateForm() {
+        return new ModelAndView("new-student").addObject("student", new CreateStudentDTO());
     }
 
     @PostMapping("/new")
