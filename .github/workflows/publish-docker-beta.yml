@@ -5,7 +5,7 @@ on:
     branches-ignore:
       - 'main'
       - 'vulnerable'
-      - 'skip-depcheck'
+      - 'dast-only'
 
 jobs:
   push_to_registry:
