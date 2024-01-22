@@ -60,8 +60,9 @@ Tylko dla gałęzi `main`. Buduje aplikację, uruchamia testy, buduje i wypycha 
 Dla wszystkich innych gałęzi z wyjątkiem dwóch poniższych. Buduje aplikację, uruchamia testy,
 buduje i wypycha obraz z tagiem `beta`.
 ##### publish-docker-beta-skip-depcheck
-Tylko dla gałęzi `skip-depcheck`. Buduje aplikację, uruchamia testy, jednak testy zależności są
-ustawione tak aby nie zwracały błędów.
+Tylko dla gałęzi `skip-depcheck`. Buduje aplikację, uruchamia testy,
+buduje i wypycha obraz z tagiem `beta`. Jednak testy zależności są ustawione tak aby nie
+zwracały błędów (próg CVSS ustawiony jest na 9.9999).
 ##### publish-docker-vulnerable
 Tylko dla gałęzi `vulnerable`. Buduje i wypycha obraz z tagiem `vulnerable`.
 
