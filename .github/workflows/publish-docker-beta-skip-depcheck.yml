@@ -2,10 +2,9 @@ name: Publish Docker image
 
 on:
   push:
-    branches-ignore:
-      - 'main'
-      - 'vulnerable'
+    branches:
       - 'skip-depcheck'
+
 
 jobs:
   push_to_registry:
@@ -40,7 +39,7 @@ jobs:
           path: '.'
           format: 'HTML'
           args: >
-            --failOnCVSS 7
+            --failOnCVSS 9.99999
 
       - name: Upload Test results
         uses: actions/upload-artifact@master
