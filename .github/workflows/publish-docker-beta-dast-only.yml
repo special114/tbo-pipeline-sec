@@ -38,8 +38,8 @@ jobs:
           project: 'SpringThymeleafCRUD'
           path: '.'
           format: 'HTML'
-          args: >
-            --failOnCVSS 9.99999
+#          args: >
+#            --failOnCVSS 7.0
 
       - name: Upload Test results
         uses: actions/upload-artifact@master

@@ -82,4 +82,4 @@ przebiegu workflow
 * Uruchomienie aplikacji na workerze
 * Przeprowadzenie testów DAST
 * Logowanie do rejestru hub.docker.com
-* Zbudowanie i wypchnięcie obrazu do zdalnego rejestru
+* Zbudowanie i wypchnięcie obrazu do zdalnego rejestru https://hub.docker.com/repository/docker/special114/tbo-project
