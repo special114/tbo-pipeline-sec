@@ -29,7 +29,7 @@ public class StudentController {
 
     @SneakyThrows
     @GetMapping
-    public Object showStudents(@RequestParam String url, HttpServletResponse resp) {
+    public Object showStudents(@RequestParam(required = false) String url, HttpServletResponse resp) {
         if (url != null) {
             resp.sendRedirect(url);
             return null;
